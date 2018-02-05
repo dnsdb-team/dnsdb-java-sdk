@@ -39,7 +39,7 @@ public class APIClientBuilder {
   /**
    * 创建{@link APIClient}实例。
    *
-   * return {@link APIClient}实例
+   * @return {@link APIClient}实例
    */
   public APIClient build() {
     DefaultAPIClient apiClient = new DefaultAPIClient(apiId, apiKey);

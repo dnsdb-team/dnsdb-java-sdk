@@ -6,3 +6,4 @@ target/
 *.iml
 .coverage
 coverage.xml
+.DS_Store

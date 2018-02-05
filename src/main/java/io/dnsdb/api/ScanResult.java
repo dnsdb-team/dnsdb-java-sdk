@@ -19,7 +19,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class ScanResult implements Iterable<DNSRecord> {
   private final ScanResponse scanResponse;
-  private APIClient client;
+  private final APIClient client;
   private int remainingRequests;
   private long total;
   private int requestedTimes;
@@ -48,11 +48,6 @@ public class ScanResult implements Iterable<DNSRecord> {
 
   public APIClient getClient() {
     return client;
-  }
-
-  public ScanResult setClient(APIClient client) {
-    this.client = client;
-    return this;
   }
 
   public int getRemainingRequests() {

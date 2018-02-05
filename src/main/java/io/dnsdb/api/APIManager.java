@@ -6,11 +6,12 @@ package io.dnsdb.api;
  * @author Remonsan
  * @version 1.0
  */
-public class APIManager {
+public abstract class APIManager {
+  public static final String DEFAULT_API_BASE_URL = "https://api.dnsdb.io";
   /**
    * API服务器的地址
    */
-  public static String API_BASE_URL = "https://api.dnsdb.io";
+  public static String API_BASE_URL = DEFAULT_API_BASE_URL;
   /**
    * API接口版本号
    */

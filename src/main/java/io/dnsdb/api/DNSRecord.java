@@ -47,12 +47,4 @@ public class DNSRecord {
     return this;
   }
 
-  @Override
-  public String toString() {
-    return "DNSRecord{" +
-            "host='" + host + '\'' +
-            ", type='" + type + '\'' +
-            ", value='" + value + '\'' +
-            '}';
-  }
 }

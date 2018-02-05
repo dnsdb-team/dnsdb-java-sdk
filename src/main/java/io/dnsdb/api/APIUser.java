@@ -43,14 +43,4 @@ public class APIUser {
     return expirationTime;
   }
 
-  @Override
-  public String toString() {
-    return "APIUser{" +
-            "apiId='" + apiId + '\'' +
-            ", user='" + user + '\'' +
-            ", remainingRequests=" + remainingRequests +
-            ", creationTime=" + creationTime +
-            ", expirationTime=" + expirationTime +
-            '}';
-  }
 }

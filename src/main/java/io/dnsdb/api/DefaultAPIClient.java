@@ -47,12 +47,7 @@ public class DefaultAPIClient implements APIClient {
   }
 
   public DefaultAPIClient(String apiId, String apiKey) {
-    this.apiId = checkNotNull(apiId);
-    this.apiKey = checkNotNull(apiKey);
-    this.httpClient = HttpClients.createDefault();
-    this.requestConfig = RequestConfig.custom()
-            .setConnectTimeout(5000).setConnectionRequestTimeout(1000)
-            .setSocketTimeout(5000).build();
+    this(apiId, apiKey, RequestConfig.custom().setConnectTimeout(5000).setConnectionRequestTimeout(1000).setSocketTimeout(5000).build());
   }
 
   private APIResponse doGet(String uri, Class<? extends APIResponse> responseClass) throws IOException {
