@@ -1,4 +1,6 @@
 # dnsdb-java-sdk
+[![Build Status](https://travis-ci.org/dnsdb-team/dnsdb-java-sdk.svg?branch=master)](https://travis-ci.org/dnsdb-team/dnsdb-java-sdk)
+
 dnsdb-java-sdk是一个实现[DNSDB API v1](https://apidoc.dnsdb.io)所有接口的Java库。你可以使用该Java库轻松方便的调用[DNSDB API v1](https://apidoc.dnsdb.io)。
 
 
