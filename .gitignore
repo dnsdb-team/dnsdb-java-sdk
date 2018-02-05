@@ -1,0 +1,8 @@
+.idea/
+build/
+target/
+*.bak
+*.log
+*.iml
+.coverage
+coverage.xml
