@@ -7,6 +7,7 @@ package io.dnsdb.api;
  * @version 1.0
  */
 public abstract class APIManager {
+
   public static final String DEFAULT_API_BASE_URL = "https://api.dnsdb.io";
   /**
    * API服务器的地址

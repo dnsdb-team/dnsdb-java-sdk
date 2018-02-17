@@ -1,7 +1,6 @@
 package io.dnsdb.api.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.dnsdb.api.exceptions.APIException;
 
 /**
@@ -11,6 +10,7 @@ import io.dnsdb.api.exceptions.APIException;
  * @version 1.0
  */
 public class APIResponse {
+
   @JsonProperty("error_code")
   private Integer errorCode;
   @JsonProperty("error_msg")

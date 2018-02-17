@@ -2,7 +2,6 @@ package io.dnsdb.api.responses;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Date;
 
 /**
@@ -12,6 +11,7 @@ import java.util.Date;
  * @version 1.0
  */
 public class APIUserResponse extends APIResponse {
+
   @JsonProperty("api_id")
   private String apiId;
   private String user;

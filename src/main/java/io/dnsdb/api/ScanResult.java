@@ -1,15 +1,13 @@
 package io.dnsdb.api;
 
-import com.google.common.collect.Lists;
+import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.google.common.collect.Lists;
+import io.dnsdb.api.exceptions.IteratorException;
+import io.dnsdb.api.responses.ScanResponse;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-
-import io.dnsdb.api.exceptions.IteratorException;
-import io.dnsdb.api.responses.ScanResponse;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * <code>ScanResult</code>类表示一次scan结果。该类的实例是一个可叠戴对象。通过迭代获取所有的查询结果。
@@ -18,6 +16,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @version 1.0
  */
 public class ScanResult implements Iterable<DNSRecord> {
+
   private final ScanResponse scanResponse;
   private final APIClient client;
   private int remainingRequests;
@@ -64,6 +63,7 @@ public class ScanResult implements Iterable<DNSRecord> {
 
 
   class ScanIterator implements Iterator<DNSRecord> {
+
     private long count = 0;
     private List<DNSRecord> currentRecords = Lists.newLinkedList(scanResponse.getRecords());
     private String scanId = scanResponse.getScanId();

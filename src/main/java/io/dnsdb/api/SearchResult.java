@@ -1,9 +1,9 @@
 package io.dnsdb.api;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Iterator;
 import java.util.List;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * <code>SearchResult</code>表示一次search结果。
@@ -12,6 +12,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @version 1.0
  */
 public class SearchResult implements Iterable<DNSRecord> {
+
   private final List<DNSRecord> records;
   private final int remainingRequests;
   private final long total;

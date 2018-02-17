@@ -10,6 +10,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
  * @version 1.0
  */
 public class APIClientBuilder {
+
   private String apiId;
   private String apiKey;
   private CloseableHttpClient client;
@@ -18,7 +19,7 @@ public class APIClientBuilder {
   /**
    * 构造器。
    *
-   * @param apiId  API ID
+   * @param apiId API ID
    * @param apiKey API key
    */
   public APIClientBuilder(String apiId, String apiKey) {

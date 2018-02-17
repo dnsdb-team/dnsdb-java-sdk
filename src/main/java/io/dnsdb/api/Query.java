@@ -7,6 +7,7 @@ package io.dnsdb.api;
  * @version 1.0
  */
 public class Query {
+
   private String host;
   private String domain;
   private String type;

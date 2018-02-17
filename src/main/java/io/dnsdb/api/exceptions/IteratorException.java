@@ -7,6 +7,7 @@ package io.dnsdb.api.exceptions;
  * @version 1.0
  */
 public class IteratorException extends RuntimeException {
+
   public IteratorException(String message) {
     super(message);
   }

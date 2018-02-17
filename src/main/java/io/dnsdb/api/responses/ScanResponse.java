@@ -1,10 +1,8 @@
 package io.dnsdb.api.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.List;
-
 import io.dnsdb.api.DNSRecord;
+import java.util.List;
 
 /**
  * <code>ScanResponse</code>代表GET /v1/dns/scan/create 和 GET /v1/dns/scan/next的响应信息。
@@ -13,6 +11,7 @@ import io.dnsdb.api.DNSRecord;
  * @version 1.0
  */
 public class ScanResponse extends APIResponse {
+
   private List<DNSRecord> records;
   @JsonProperty("scan_id")
   private String scanId;

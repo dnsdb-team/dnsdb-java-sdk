@@ -9,13 +9,15 @@ import java.util.Date;
  * @version 1.0
  */
 public class APIUser {
+
   private final String apiId;
   private final String user;
   private final int remainingRequests;
   private final Date creationTime;
   private final Date expirationTime;
 
-  public APIUser(String apiId, String user, int remainingRequests, Date creationTime, Date expirationTime) {
+  public APIUser(String apiId, String user, int remainingRequests, Date creationTime,
+      Date expirationTime) {
     this.apiId = apiId;
     this.user = user;
     this.remainingRequests = remainingRequests;

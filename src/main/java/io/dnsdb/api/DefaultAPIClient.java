@@ -1,9 +1,17 @@
 package io.dnsdb.api;
 
-import com.google.common.base.Preconditions;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.google.common.base.Preconditions;
+import io.dnsdb.api.exceptions.APIException;
+import io.dnsdb.api.responses.APIResponse;
+import io.dnsdb.api.responses.APIUserResponse;
+import io.dnsdb.api.responses.ScanResponse;
+import io.dnsdb.api.responses.SearchResponse;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -13,18 +21,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import io.dnsdb.api.exceptions.APIException;
-import io.dnsdb.api.responses.APIResponse;
-import io.dnsdb.api.responses.APIUserResponse;
-import io.dnsdb.api.responses.ScanResponse;
-import io.dnsdb.api.responses.SearchResponse;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-
 /**
  * <code>DefaultAPIClient</code>实现了{@link APIClient}接口。
  *
@@ -33,6 +29,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @see io.dnsdb.api.APIClient
  */
 public class DefaultAPIClient implements APIClient {
+
   private CloseableHttpClient httpClient;
   private String apiId;
   private String apiKey;
@@ -47,10 +44,13 @@ public class DefaultAPIClient implements APIClient {
   }
 
   public DefaultAPIClient(String apiId, String apiKey) {
-    this(apiId, apiKey, RequestConfig.custom().setConnectTimeout(5000).setConnectionRequestTimeout(1000).setSocketTimeout(5000).build());
+    this(apiId, apiKey,
+        RequestConfig.custom().setConnectTimeout(5000).setConnectionRequestTimeout(1000)
+            .setSocketTimeout(5000).build());
   }
 
-  private APIResponse doGet(String uri, Class<? extends APIResponse> responseClass) throws IOException {
+  private APIResponse doGet(String uri, Class<? extends APIResponse> responseClass)
+      throws IOException {
     HttpGet httpGet = new HttpGet(uri);
     httpGet.setHeader("API-ID", this.apiId);
     httpGet.setHeader("API-Key", this.apiKey);
@@ -77,21 +77,23 @@ public class DefaultAPIClient implements APIClient {
     Preconditions.checkNotNull(query);
     try {
       URI uri = new URIBuilder().setParameter("domain", query.getDomain())
-              .setParameter("type", query.getType())
-              .setParameter("ip", query.getIp())
-              .setParameter("host", query.getHost())
-              .setParameter("value_domain", query.getValueDomain())
-              .setParameter("value_host", query.getValueHost())
-              .setParameter("value_ip", query.getValueIp())
-              .setParameter("email", query.getEmail())
-              .setParameter("page", page + "")
-              .setParameter("size", pageSize + "")
-              .build();
-      SearchResponse response = (SearchResponse) doGet(getUrl("dns/search") + uri.toString(), SearchResponse.class);
+          .setParameter("type", query.getType())
+          .setParameter("ip", query.getIp())
+          .setParameter("host", query.getHost())
+          .setParameter("value_domain", query.getValueDomain())
+          .setParameter("value_host", query.getValueHost())
+          .setParameter("value_ip", query.getValueIp())
+          .setParameter("email", query.getEmail())
+          .setParameter("page", page + "")
+          .setParameter("size", pageSize + "")
+          .build();
+      SearchResponse response = (SearchResponse) doGet(getUrl("dns/search") + uri.toString(),
+          SearchResponse.class);
       if (response.hasError()) {
         throw new APIException(response.getErrorCode(), response.getErrorMsg());
       }
-      return new SearchResult(response.getRecords(), response.getRemainingRequests(), response.getTotal());
+      return new SearchResult(response.getRecords(), response.getRemainingRequests(),
+          response.getTotal());
     } catch (URISyntaxException ignored) {
     }
     return null;
@@ -102,15 +104,15 @@ public class DefaultAPIClient implements APIClient {
   public ScanResponse createScan(Query query, int perSize) throws IOException {
     try {
       URI uri = new URIBuilder().setParameter("domain", query.getDomain())
-              .setParameter("type", query.getType())
-              .setParameter("ip", query.getIp())
-              .setParameter("host", query.getHost())
-              .setParameter("value_domain", query.getValueDomain())
-              .setParameter("value_host", query.getValueHost())
-              .setParameter("value_ip", query.getValueIp())
-              .setParameter("email", query.getEmail())
-              .setParameter("size", perSize + "")
-              .build();
+          .setParameter("type", query.getType())
+          .setParameter("ip", query.getIp())
+          .setParameter("host", query.getHost())
+          .setParameter("value_domain", query.getValueDomain())
+          .setParameter("value_host", query.getValueHost())
+          .setParameter("value_ip", query.getValueIp())
+          .setParameter("email", query.getEmail())
+          .setParameter("size", perSize + "")
+          .build();
       return (ScanResponse) doGet(getUrl("dns/scan/create") + uri.toString(), ScanResponse.class);
     } catch (URISyntaxException ignored) {
       return null;
@@ -142,7 +144,8 @@ public class DefaultAPIClient implements APIClient {
     if (response.hasError()) {
       throw new APIException(response.getErrorCode(), response.getErrorMsg());
     }
-    return new APIUser(response.getApiId(), response.getUser(), response.getRemainingRequests(), response.getCreationTime(), response.getExpirationTime());
+    return new APIUser(response.getApiId(), response.getUser(), response.getRemainingRequests(),
+        response.getCreationTime(), response.getExpirationTime());
   }
 
   public CloseableHttpClient getHttpClient() {

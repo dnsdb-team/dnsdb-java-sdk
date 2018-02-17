@@ -7,6 +7,7 @@ package io.dnsdb.api;
  * @version 1.0
  */
 public class DNSRecord {
+
   private String host;
   private String type;
   private String value;
