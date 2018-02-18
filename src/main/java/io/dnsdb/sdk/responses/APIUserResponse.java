@@ -1,4 +1,4 @@
-package io.dnsdb.api.responses;
+package io.dnsdb.sdk.responses;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

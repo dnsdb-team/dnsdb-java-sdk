@@ -1,4 +1,4 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
 /**
  * <code>Query</code>类表示DNS查询条件。

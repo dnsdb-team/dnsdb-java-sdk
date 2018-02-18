@@ -1,4 +1,4 @@
-package io.dnsdb.api.exceptions;
+package io.dnsdb.sdk.exceptions;
 
 /**
  * <code>APIException</code>表示API级别的异常。

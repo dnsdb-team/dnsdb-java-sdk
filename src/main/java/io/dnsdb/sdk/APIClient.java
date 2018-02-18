@@ -1,10 +1,10 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
-import static io.dnsdb.api.APIManager.API_BASE_URL;
-import static io.dnsdb.api.APIManager.API_VERSION;
+import static io.dnsdb.sdk.APIManager.API_BASE_URL;
+import static io.dnsdb.sdk.APIManager.API_VERSION;
 
-import io.dnsdb.api.exceptions.APIException;
-import io.dnsdb.api.responses.ScanResponse;
+import io.dnsdb.sdk.exceptions.APIException;
+import io.dnsdb.sdk.responses.ScanResponse;
 import java.io.IOException;
 
 /**

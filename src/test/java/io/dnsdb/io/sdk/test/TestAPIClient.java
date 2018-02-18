@@ -1,4 +1,4 @@
-package io.dnsdb.io.test;
+package io.dnsdb.io.sdk.test;
 
 import com.google.common.collect.Lists;
 
@@ -16,28 +16,28 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import io.dnsdb.api.APIClient;
-import io.dnsdb.api.APIClientBuilder;
-import io.dnsdb.api.APIManager;
-import io.dnsdb.api.APIUser;
-import io.dnsdb.api.DNSRecord;
-import io.dnsdb.api.DefaultAPIClient;
-import io.dnsdb.api.Query;
-import io.dnsdb.api.ScanResult;
-import io.dnsdb.api.SearchResult;
-import io.dnsdb.api.exceptions.APIException;
-import io.dnsdb.api.exceptions.IteratorException;
-import io.dnsdb.api.responses.APIResponse;
-import io.dnsdb.api.responses.APIUserResponse;
-import io.dnsdb.api.responses.ScanResponse;
-import io.dnsdb.api.responses.SearchResponse;
+import io.dnsdb.sdk.APIClient;
+import io.dnsdb.sdk.APIClientBuilder;
+import io.dnsdb.sdk.APIManager;
+import io.dnsdb.sdk.APIUser;
+import io.dnsdb.sdk.DNSRecord;
+import io.dnsdb.sdk.DefaultAPIClient;
+import io.dnsdb.sdk.Query;
+import io.dnsdb.sdk.ScanResult;
+import io.dnsdb.sdk.SearchResult;
+import io.dnsdb.sdk.exceptions.APIException;
+import io.dnsdb.sdk.exceptions.IteratorException;
+import io.dnsdb.sdk.responses.APIResponse;
+import io.dnsdb.sdk.responses.APIUserResponse;
+import io.dnsdb.sdk.responses.ScanResponse;
+import io.dnsdb.sdk.responses.SearchResponse;
 
 import static com.google.common.base.Objects.equal;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * <code>TestAPIClient</code>用于测试{@link io.dnsdb.api.DefaultAPIClient}
+ * <code>TestAPIClient</code>用于测试{@link io.dnsdb.sdk.DefaultAPIClient}
  *
  * @author Remonsan
  */

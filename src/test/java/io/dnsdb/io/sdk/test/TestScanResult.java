@@ -1,16 +1,16 @@
-package io.dnsdb.io.test;
+package io.dnsdb.io.sdk.test;
 
 import org.junit.Test;
 
-import io.dnsdb.api.APIClient;
-import io.dnsdb.api.APIClientBuilder;
-import io.dnsdb.api.ScanResult;
-import io.dnsdb.api.responses.ScanResponse;
+import io.dnsdb.sdk.APIClient;
+import io.dnsdb.sdk.APIClientBuilder;
+import io.dnsdb.sdk.ScanResult;
+import io.dnsdb.sdk.responses.ScanResponse;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * <code>TestScanResult</code>用于测试{@link io.dnsdb.api.ScanResult}
+ * <code>TestScanResult</code>用于测试{@link io.dnsdb.sdk.ScanResult}
  *
  * @author Remonsan
  */

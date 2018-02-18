@@ -1,14 +1,14 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Preconditions;
-import io.dnsdb.api.exceptions.APIException;
-import io.dnsdb.api.responses.APIResponse;
-import io.dnsdb.api.responses.APIUserResponse;
-import io.dnsdb.api.responses.ScanResponse;
-import io.dnsdb.api.responses.SearchResponse;
+import io.dnsdb.sdk.exceptions.APIException;
+import io.dnsdb.sdk.responses.APIResponse;
+import io.dnsdb.sdk.responses.APIUserResponse;
+import io.dnsdb.sdk.responses.ScanResponse;
+import io.dnsdb.sdk.responses.SearchResponse;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,7 +26,7 @@ import org.apache.http.util.EntityUtils;
  *
  * @author Remonsan
  * @version 1.0
- * @see io.dnsdb.api.APIClient
+ * @see io.dnsdb.sdk.APIClient
  */
 public class DefaultAPIClient implements APIClient {
 

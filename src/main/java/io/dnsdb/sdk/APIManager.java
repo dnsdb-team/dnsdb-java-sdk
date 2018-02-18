@@ -1,4 +1,4 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
 /**
  * <code>APIManager</code>类用于管理API全局设置。

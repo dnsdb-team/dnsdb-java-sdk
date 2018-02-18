@@ -1,4 +1,4 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;

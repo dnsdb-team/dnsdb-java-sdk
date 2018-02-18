@@ -1,4 +1,4 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
 /**
  * <code>DNSRecord</code>表示一条DNS记录。

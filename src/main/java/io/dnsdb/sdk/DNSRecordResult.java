@@ -1,4 +1,4 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
 /**
  * <code>DNSRecordResult</code>接口表示DNS查询结果。

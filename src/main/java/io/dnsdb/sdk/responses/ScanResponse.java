@@ -1,7 +1,7 @@
-package io.dnsdb.api.responses;
+package io.dnsdb.sdk.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.dnsdb.api.DNSRecord;
+import io.dnsdb.sdk.DNSRecord;
 import java.util.List;
 
 /**

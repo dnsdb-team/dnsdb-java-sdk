@@ -1,10 +1,10 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.common.collect.Lists;
-import io.dnsdb.api.exceptions.IteratorException;
-import io.dnsdb.api.responses.ScanResponse;
+import io.dnsdb.sdk.exceptions.IteratorException;
+import io.dnsdb.sdk.responses.ScanResponse;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;

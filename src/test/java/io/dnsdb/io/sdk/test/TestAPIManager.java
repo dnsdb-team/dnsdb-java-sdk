@@ -1,13 +1,13 @@
-package io.dnsdb.io.test;
+package io.dnsdb.io.sdk.test;
 
 import org.junit.Test;
 
-import io.dnsdb.api.APIManager;
+import io.dnsdb.sdk.APIManager;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * <code>TestAPIManager</code>用于测试{@link io.dnsdb.api.APIManager}
+ * <code>TestAPIManager</code>用于测试{@link io.dnsdb.sdk.APIManager}
  *
  * @author Remonsan
  */

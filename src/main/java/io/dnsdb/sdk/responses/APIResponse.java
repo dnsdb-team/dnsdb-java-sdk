@@ -1,7 +1,7 @@
-package io.dnsdb.api.responses;
+package io.dnsdb.sdk.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.dnsdb.api.exceptions.APIException;
+import io.dnsdb.sdk.exceptions.APIException;
 
 /**
  * <code>APIResponse</code>类代表一个API请求响应。

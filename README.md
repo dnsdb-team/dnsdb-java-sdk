@@ -43,14 +43,14 @@ dnsdb-java-sdk是一个实现[DNSDB API v1](https://apidoc.dnsdb.io)所有接口
 ```java
 import java.io.IOException;
 
-import io.dnsdb.api.APIClient;
-import io.dnsdb.api.APIClientBuilder;
-import io.dnsdb.api.APIUser;
-import io.dnsdb.api.DNSRecord;
-import io.dnsdb.api.Query;
-import io.dnsdb.api.ScanResult;
-import io.dnsdb.api.SearchResult;
-import io.dnsdb.api.exceptions.APIException;
+import io.dnsdb.sdk.APIClient;
+import io.dnsdb.sdk.APIClientBuilder;
+import io.dnsdb.sdk.APIUser;
+import io.dnsdb.sdk.DNSRecord;
+import io.dnsdb.sdk.Query;
+import io.dnsdb.sdk.ScanResult;
+import io.dnsdb.sdk.SearchResult;
+import io.dnsdb.sdk.exceptions.APIException;
 
 public class Application {
   public static void main(String[] args) throws APIException, IOException {

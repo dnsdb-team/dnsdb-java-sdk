@@ -1,4 +1,4 @@
-package io.dnsdb.io.test;
+package io.dnsdb.io.sdk.test;
 
 import com.google.common.collect.Queues;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Queue;
 
 import fi.iki.elonen.NanoHTTPD;
-import io.dnsdb.api.responses.APIResponse;
+import io.dnsdb.sdk.responses.APIResponse;
 
 /**
  * <code>APITestServer</code>是一个API测试服务器。

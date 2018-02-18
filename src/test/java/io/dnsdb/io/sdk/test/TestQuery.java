@@ -1,8 +1,8 @@
-package io.dnsdb.io.test;
+package io.dnsdb.io.sdk.test;
 
 import org.junit.Test;
 
-import io.dnsdb.api.Query;
+import io.dnsdb.sdk.Query;
 
 import static org.junit.Assert.assertEquals;
 

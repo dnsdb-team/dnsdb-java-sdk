@@ -1,4 +1,4 @@
-package io.dnsdb.api.exceptions;
+package io.dnsdb.sdk.exceptions;
 
 /**
  * <code>IteratorException</code>表示迭代异常。

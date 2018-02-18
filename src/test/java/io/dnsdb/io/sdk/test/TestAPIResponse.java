@@ -1,14 +1,14 @@
-package io.dnsdb.io.test;
+package io.dnsdb.io.sdk.test;
 
 import org.junit.Test;
 
-import io.dnsdb.api.exceptions.APIException;
-import io.dnsdb.api.responses.APIResponse;
+import io.dnsdb.sdk.exceptions.APIException;
+import io.dnsdb.sdk.responses.APIResponse;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * <code>TestAPIResponse</code>用于测试{@link io.dnsdb.api.responses.APIResponse}
+ * <code>TestAPIResponse</code>用于测试{@link io.dnsdb.sdk.responses.APIResponse}
  *
  * @author Remonsan
  */

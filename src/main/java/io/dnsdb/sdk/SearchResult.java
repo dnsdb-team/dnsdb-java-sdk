@@ -1,4 +1,4 @@
-package io.dnsdb.api;
+package io.dnsdb.sdk;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
