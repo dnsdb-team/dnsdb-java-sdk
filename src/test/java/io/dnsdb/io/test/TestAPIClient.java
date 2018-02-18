@@ -174,6 +174,7 @@ public class TestAPIClient {
     server.getScanNextResponses().add(scanResponse3);
     ScanResult result = client.scan(new Query().setDomain("google.com"));
     assertEquals(total, result.getTotal());
+    assertEquals(total, result.size());
     assertEquals(5, result.getRemainingRequests());
     int count = 0;
     for (DNSRecord ignored : result) {

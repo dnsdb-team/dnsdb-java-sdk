@@ -14,8 +14,9 @@ import java.util.List;
  *
  * @author Remonsan
  * @version 1.0
+ * @see DNSRecordResult
  */
-public class ScanResult implements Iterable<DNSRecord> {
+public class ScanResult implements DNSRecordResult {
 
   private final ScanResponse scanResponse;
   private final APIClient client;
@@ -53,7 +54,13 @@ public class ScanResult implements Iterable<DNSRecord> {
     return remainingRequests;
   }
 
+  @Override
   public long getTotal() {
+    return total;
+  }
+
+  @Override
+  public long size() {
     return total;
   }
 

@@ -10,8 +10,9 @@ import java.util.List;
  *
  * @author Remonsan
  * @version 1.0
+ * @see DNSRecordResult
  */
-public class SearchResult implements Iterable<DNSRecord> {
+public class SearchResult implements DNSRecordResult {
 
   private final List<DNSRecord> records;
   private final int remainingRequests;
@@ -23,11 +24,13 @@ public class SearchResult implements Iterable<DNSRecord> {
     this.total = total;
   }
 
+  @Override
   public Iterator<DNSRecord> iterator() {
     return records.iterator();
   }
 
-  public int size() {
+  @Override
+  public long size() {
     return records.size();
   }
 
