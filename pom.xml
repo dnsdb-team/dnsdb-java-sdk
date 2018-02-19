@@ -6,7 +6,7 @@
 
     <groupId>io.dnsdb.sdk</groupId>
     <artifactId>dnsdb-java-sdk</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>dnsdb-java-sdk</name>

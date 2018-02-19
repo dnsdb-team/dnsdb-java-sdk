@@ -1,6 +1,9 @@
 # dnsdb-java-sdk
 [![Build Status](https://travis-ci.org/dnsdb-team/dnsdb-java-sdk.svg?branch=master)](https://travis-ci.org/dnsdb-team/dnsdb-java-sdk)
 [![Coverage Status](https://coveralls.io/repos/github/dnsdb-team/dnsdb-java-sdk/badge.svg?branch=master)](https://coveralls.io/github/dnsdb-team/dnsdb-java-sdk?branch=master)
+[![Apache Maven](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg)]()
+[![JDK](https://img.shields.io/badge/jdk-8%2B-blue.svg)](http://www.oracle.com/technetwork/java/javase/downloads)
+[![License](https://img.shields.io/github/license/dnsdb-team/dnsdb-java-sdk.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
 dnsdb-java-sdk是一个实现[DNSDB API v1](https://apidoc.dnsdb.io)所有接口的Java库。你可以使用该Java库轻松方便的调用[DNSDB API v1](https://apidoc.dnsdb.io)。
 
@@ -16,27 +19,19 @@ dnsdb-java-sdk是一个实现[DNSDB API v1](https://apidoc.dnsdb.io)所有接口
 
 * JDK 8+
 * Apache Maven 3+
-* 在[https://dnsdb.io](https://dnsdb.io)上已经创建至少一个API User，并且该API User有可用的API请求次数
+* 在[https://dnsdb.io](https://dnsdb.io)上已经创建至少一个`API User`，并且该`API User`有可用的API请求次数
 
 # Quick Start
 
-1. 克隆dnsdb-python-sdk到本地
-    ```bash
-    git clone git@github.com:dnsdb-team/dnsdb-java-sdk.git
-    ```
-2. 安装到本地仓库
-    ```bash
-    cd dnsdb-java-sdk
-    mvn clean install
-    ```
-3. 在您的项目中pom.xml中的`dependencies`元素下增加以下配置
-    ```xml
-    <dependency>
-         <groupId>io.dnsdb.sdk</groupId>
-         <artifactId>dnsdb-java-sdk</artifactId>
-         <version>1.0-SNAPSHOT</version>
-    </dependency>
-    ```
+### Maven配置
+
+```xml
+<dependency>
+   <groupId>io.dnsdb.sdk</groupId>
+   <artifactId>dnsdb-java-sdk</artifactId>
+   <version>0.0.1</version>
+</dependency>
+```
  
  ## Example
  
