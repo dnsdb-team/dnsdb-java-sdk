@@ -1,21 +1,10 @@
 package io.dnsdb.io.sdk.test;
 
+import static com.google.common.base.Objects.equal;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import com.google.common.collect.Lists;
-
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-
 import io.dnsdb.sdk.APIClient;
 import io.dnsdb.sdk.APIClientBuilder;
 import io.dnsdb.sdk.APIManager;
@@ -31,17 +20,27 @@ import io.dnsdb.sdk.responses.APIResponse;
 import io.dnsdb.sdk.responses.APIUserResponse;
 import io.dnsdb.sdk.responses.ScanResponse;
 import io.dnsdb.sdk.responses.SearchResponse;
-
-import static com.google.common.base.Objects.equal;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * <code>TestAPIClient</code>用于测试{@link io.dnsdb.sdk.DefaultAPIClient}
  *
  * @author Remonsan
+ * @version 1.0
  */
 public class TestAPIClient {
+
   private APIClient client;
   private APITestServer server;
   private static final int SERVER_PORT = 58080;
@@ -52,10 +51,10 @@ public class TestAPIClient {
 
   private APIUserResponse randomAPIUserResponse() {
     return new APIUserResponse().setApiId(UUID.randomUUID().toString().replace("-", ""))
-            .setUser("admin")
-            .setCreationTime(new Date())
-            .setRemainingRequests(Math.abs(new Random().nextInt()))
-            .setExpirationTime(new Date());
+        .setUser("admin")
+        .setCreationTime(new Date())
+        .setRemainingRequests(Math.abs(new Random().nextInt()))
+        .setExpirationTime(new Date());
   }
 
   private SearchResponse randomSearchResponse() {
@@ -64,12 +63,13 @@ public class TestAPIClient {
       records.add(new DNSRecord().setHost(i + ".google.com").setType("a").setValue(i + ""));
     }
     return new SearchResponse().setRecords(records)
-            .setRemainingRequests(Math.abs(new Random().nextInt()))
-            .setTotal(50 + Math.abs(new Random().nextInt()) % 1000);
+        .setRemainingRequests(Math.abs(new Random().nextInt()))
+        .setTotal(50 + Math.abs(new Random().nextInt()) % 1000);
   }
 
   private boolean equalsDNSRecord(DNSRecord record1, DNSRecord record2) {
-    return equal(record1.getHost(), record2.getHost()) && equal(record1.getType(), record2.getType()) && equal(record1.getValue(), record2.getValue());
+    return equal(record1.getHost(), record2.getHost()) && equal(record1.getType(),
+        record2.getType()) && equal(record1.getValue(), record2.getValue());
   }
 
   private boolean equalDNSRecords(List<DNSRecord> records1, List<DNSRecord> records2) {
@@ -90,10 +90,10 @@ public class TestAPIClient {
     String apiId = generateUUIDString();
     String apiKey = generateUUIDString();
     RequestConfig requestConfig = RequestConfig.custom()
-            .setConnectTimeout(5000).setConnectionRequestTimeout(1000)
-            .setSocketTimeout(5000).build();
+        .setConnectTimeout(5000).setConnectionRequestTimeout(1000)
+        .setSocketTimeout(5000).build();
     client = new APIClientBuilder(apiId, apiKey).setClient(HttpClients.createDefault())
-            .setRequestConfig(requestConfig).build();
+        .setRequestConfig(requestConfig).build();
     server = new APITestServer(SERVER_PORT);
     server.start();
     Thread.sleep(100);
@@ -123,7 +123,8 @@ public class TestAPIClient {
 
   @Test(expected = APIException.class)
   public void testGetAPIUserError() throws APIException, IOException {
-    server.getApiUserResponses().add(new APIResponse().setErrorCode(10001).setErrorMsg("unauthorized"));
+    server.getApiUserResponses()
+        .add(new APIResponse().setErrorCode(10001).setErrorMsg("unauthorized"));
     client.getAPIUser();
   }
 
@@ -145,7 +146,8 @@ public class TestAPIClient {
 
   @Test(expected = APIException.class)
   public void testSearchError() throws APIException, IOException {
-    server.getSearchResponses().add(new APIResponse().setErrorCode(10001).setErrorMsg("unauthorized"));
+    server.getSearchResponses()
+        .add(new APIResponse().setErrorCode(10001).setErrorMsg("unauthorized"));
     client.search(new Query().setDomain("google.com"), 1);
   }
 
@@ -153,22 +155,25 @@ public class TestAPIClient {
   public void testScan() throws APIException, IOException {
     String scanId = "DnF1ZXJ5VGhlbkZldGNoBQAAAAAAAw";
     List<DNSRecord> records1 = Lists.newArrayList(
-            new DNSRecord("www.google.com", "a", "1.1.1.1"),
-            new DNSRecord("www.google.com", "a", "1.1.1.1"),
-            new DNSRecord("www.google.com", "a", "1.1.1.1")
+        new DNSRecord("www.google.com", "a", "1.1.1.1"),
+        new DNSRecord("www.google.com", "a", "1.1.1.1"),
+        new DNSRecord("www.google.com", "a", "1.1.1.1")
     );
     List<DNSRecord> records2 = Lists.newArrayList(
-            new DNSRecord("www.google.com", "a", "1.1.1.1"),
-            new DNSRecord("www.google.com", "a", "1.1.1.1"),
-            new DNSRecord("www.google.com", "a", "1.1.1.1")
+        new DNSRecord("www.google.com", "a", "1.1.1.1"),
+        new DNSRecord("www.google.com", "a", "1.1.1.1"),
+        new DNSRecord("www.google.com", "a", "1.1.1.1")
     );
     List<DNSRecord> records3 = Lists.newArrayList(
-            new DNSRecord("www.google.com", "a", "1.1.1.1")
+        new DNSRecord("www.google.com", "a", "1.1.1.1")
     );
     int total = records1.size() + records2.size() + records3.size();
-    ScanResponse scanResponse1 = new ScanResponse().setScanId(scanId).setTotal(total).setRecords(records1).setRemainingRequests(5);
-    ScanResponse scanResponse2 = new ScanResponse().setScanId(scanId).setTotal(total).setRecords(records2).setRemainingRequests(4);
-    ScanResponse scanResponse3 = new ScanResponse().setScanId(scanId).setTotal(total).setRecords(records3).setRemainingRequests(3);
+    ScanResponse scanResponse1 = new ScanResponse().setScanId(scanId).setTotal(total)
+        .setRecords(records1).setRemainingRequests(5);
+    ScanResponse scanResponse2 = new ScanResponse().setScanId(scanId).setTotal(total)
+        .setRecords(records2).setRemainingRequests(4);
+    ScanResponse scanResponse3 = new ScanResponse().setScanId(scanId).setTotal(total)
+        .setRecords(records3).setRemainingRequests(3);
     server.getScanCreateResponses().add(scanResponse1);
     server.getScanNextResponses().add(scanResponse2);
     server.getScanNextResponses().add(scanResponse3);
@@ -187,18 +192,20 @@ public class TestAPIClient {
 
   @Test(expected = APIException.class)
   public void testScanAPIError() throws APIException, IOException {
-    server.getScanCreateResponses().add(new APIResponse().setErrorCode(10001).setErrorMsg("unauthorized"));
+    server.getScanCreateResponses()
+        .add(new APIResponse().setErrorCode(10001).setErrorMsg("unauthorized"));
     client.scan(new Query().setDomain("google.com"));
   }
 
   @Test(expected = IteratorException.class)
   public void testScanResultRepeatIteration() throws APIException, IOException {
     List<DNSRecord> records = Lists.newArrayList(
-            new DNSRecord("www.google.com", "a", "1.1.1.1"),
-            new DNSRecord("www.google.com", "a", "1.1.1.1"),
-            new DNSRecord("www.google.com", "a", "1.1.1.1")
+        new DNSRecord("www.google.com", "a", "1.1.1.1"),
+        new DNSRecord("www.google.com", "a", "1.1.1.1"),
+        new DNSRecord("www.google.com", "a", "1.1.1.1")
     );
-    server.getScanCreateResponses().add(new ScanResponse().setRecords(records).setRemainingRequests(5).setTotal(records.size()));
+    server.getScanCreateResponses().add(
+        new ScanResponse().setRecords(records).setRemainingRequests(5).setTotal(records.size()));
     ScanResult result = client.scan(new Query().setDomain("google.com"));
     for (DNSRecord ignored : result) {
     }
@@ -213,8 +220,8 @@ public class TestAPIClient {
     String apiId = generateUUIDString();
     String apiKey = generateUUIDString();
     RequestConfig requestConfig = RequestConfig.custom()
-            .setConnectTimeout(5000).setConnectionRequestTimeout(1000)
-            .setSocketTimeout(5000).build();
+        .setConnectTimeout(5000).setConnectionRequestTimeout(1000)
+        .setSocketTimeout(5000).build();
     apiClient.setHttpClient(httpClient);
     apiClient.setApiId(apiId);
     apiClient.setApiKey(apiKey);

@@ -1,17 +1,16 @@
 package io.dnsdb.io.sdk.test;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import io.dnsdb.sdk.APIManager;
-
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 /**
  * <code>TestAPIManager</code>用于测试{@link io.dnsdb.sdk.APIManager}
  *
  * @author Remonsan
  */
-public class TestAPIManager {
+public class TestAPIManager extends APIManager {
 
   @Test
   public void testRestAPIBaseURL() {

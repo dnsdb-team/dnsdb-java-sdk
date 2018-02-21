@@ -1,16 +1,13 @@
 package io.dnsdb.io.sdk.test;
 
-import com.google.common.collect.Queues;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-import java.util.Queue;
-
+import com.google.common.collect.Queues;
 import fi.iki.elonen.NanoHTTPD;
 import io.dnsdb.sdk.responses.APIResponse;
+import java.io.IOException;
+import java.util.Queue;
 
 /**
  * <code>APITestServer</code>是一个API测试服务器。
@@ -19,7 +16,9 @@ import io.dnsdb.sdk.responses.APIResponse;
  * @version 1.0
  */
 public class APITestServer extends NanoHTTPD {
-  private final ObjectMapper objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+  private final ObjectMapper objectMapper = new ObjectMapper()
+      .setSerializationInclusion(JsonInclude.Include.NON_NULL);
   private Queue<APIResponse> apiUserResponses = Queues.newConcurrentLinkedQueue();
   private Queue<APIResponse> scanCreateResponses = Queues.newConcurrentLinkedQueue();
   private Queue<APIResponse> scanNextResponses = Queues.newConcurrentLinkedQueue();
@@ -58,7 +57,8 @@ public class APITestServer extends NanoHTTPD {
         return newJsonResponse(scanNextResponses.poll());
     }
 
-    return newJsonResponse(new APIResponse().setErrorCode(10201).setErrorMsg("request wrong url").setDoc("https://apidoc.dnsdb.io"));
+    return newJsonResponse(new APIResponse().setErrorCode(10201).setErrorMsg("request wrong url")
+        .setDoc("https://apidoc.dnsdb.io"));
   }
 
   public Queue<APIResponse> getApiUserResponses() {
