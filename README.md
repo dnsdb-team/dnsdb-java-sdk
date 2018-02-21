@@ -1,12 +1,13 @@
 # dnsdb-java-sdk
 [![Build Status](https://travis-ci.org/dnsdb-team/dnsdb-java-sdk.svg?branch=master)](https://travis-ci.org/dnsdb-team/dnsdb-java-sdk)
 [![Coverage Status](https://coveralls.io/repos/github/dnsdb-team/dnsdb-java-sdk/badge.svg?branch=master)](https://coveralls.io/github/dnsdb-team/dnsdb-java-sdk?branch=master)
+[![JitPack](https://jitpack.io/v/dnsdb-team/dnsdb-java-sdk.svg)](https://jitpack.io/#dnsdb-team/dnsdb-java-sdk)
 [![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/io/dnsdb/sdk/dnsdb-java-sdk/maven-metadata.xml.svg)](https://repo.maven.apache.org/maven2/io/dnsdb/sdk/dnsdb-java-sdk/)
 [![Maven Central](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg)](https://maven.apache.org)
 [![JDK](https://img.shields.io/badge/jdk-8%2B-blue.svg)](http://www.oracle.com/technetwork/java/javase/downloads)
 [![License](https://img.shields.io/github/license/dnsdb-team/dnsdb-java-sdk.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
-**dnsdb-java-sdk** 是一个实现[DNSDB API v1](https://apidoc.dnsdb.io)所有接口的Java库。你可以使用该Java库轻松方便的调用[DNSDB API v1](https://apidoc.dnsdb.io)。
+**dnsdb-java-sdk** 是一个实现[DNSDB API v1](https://apidoc.dnsdb.io)所有接口的Java库。你可以使用该Java库轻松方便的调用[DNSDB Web API v1](https://apidoc.dnsdb.io)。
 
 
 
@@ -33,6 +34,24 @@ Maven
    <artifactId>dnsdb-java-sdk</artifactId>
    <version>0.0.1</version>
 </dependency>
+```
+
+Gradle
+
+```groovy
+compile 'io.dnsdb.sdk:dnsdb-java-sdk:0.0.1'
+```
+
+SBT
+
+```sbtshell
+libraryDependencies += "io.dnsdb.sdk" % "dnsdb-java-sdk" % "0.0.1"
+```
+
+Leiningen
+
+```
+[io.dnsdb.sdk/dnsdb-java-sdk "0.0.1"]
 ```
  
 ### Example
@@ -75,4 +94,4 @@ public class Application {
 # Links
 
 * [https://dnsdb.io](https://dnsdb.io)
-* [DNSDB API Documentation](https://apidoc.dnsdb.io)
+* [DNSDB Web API Documentation](https://apidoc.dnsdb.io)
