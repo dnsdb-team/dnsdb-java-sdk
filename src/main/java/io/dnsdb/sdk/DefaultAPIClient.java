@@ -10,13 +10,10 @@ import io.dnsdb.sdk.responses.APIUserResponse;
 import io.dnsdb.sdk.responses.ScanResponse;
 import io.dnsdb.sdk.responses.SearchResponse;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -57,8 +54,7 @@ public class DefaultAPIClient implements APIClient {
     if (requestConfig != null) {
       httpGet.setConfig(requestConfig);
     }
-    CloseableHttpResponse response = this.httpClient.execute(httpGet);
-    try {
+    try (CloseableHttpResponse response = this.httpClient.execute(httpGet)) {
       HttpEntity entity = response.getEntity();
       if (entity != null) {
         String content = EntityUtils.toString(entity);
@@ -66,8 +62,6 @@ public class DefaultAPIClient implements APIClient {
       } else {
         throw new IOException("No response data");
       }
-    } finally {
-      response.close();
     }
   }
 
@@ -75,58 +69,46 @@ public class DefaultAPIClient implements APIClient {
   @Override
   public SearchResult search(Query query, int page, int pageSize) throws APIException, IOException {
     Preconditions.checkNotNull(query);
-    try {
-      URI uri = new URIBuilder().setParameter("domain", query.getDomain())
-          .setParameter("type", query.getType())
-          .setParameter("ip", query.getIp())
-          .setParameter("host", query.getHost())
-          .setParameter("value_domain", query.getValueDomain())
-          .setParameter("value_host", query.getValueHost())
-          .setParameter("value_ip", query.getValueIp())
-          .setParameter("email", query.getEmail())
-          .setParameter("page", page + "")
-          .setParameter("size", pageSize + "")
-          .build();
-      SearchResponse response = (SearchResponse) doGet(getUrl("dns/search") + uri.toString(),
-          SearchResponse.class);
-      if (response.hasError()) {
-        throw new APIException(response.getErrorCode(), response.getErrorMsg());
-      }
-      return new SearchResult(response.getRecords(), response.getRemainingRequests(),
-          response.getTotal());
-    } catch (URISyntaxException ignored) {
+    String param = new URLParameterBuilder().put("domain", query.getDomain())
+        .put("type", query.getType())
+        .put("ip", query.getIp())
+        .put("host", query.getHost())
+        .put("value_domain", query.getValueDomain())
+        .put("value_host", query.getValueHost())
+        .put("value_ip", query.getValueIp())
+        .put("email", query.getEmail())
+        .put("page", page)
+        .put("size", pageSize)
+        .build();
+    SearchResponse response = (SearchResponse) doGet(getUrl("dns/search") + param,
+        SearchResponse.class);
+    if (response.hasError()) {
+      throw new APIException(response.getErrorCode(), response.getErrorMsg());
     }
-    return null;
+    return new SearchResult(response.getRecords(), response.getRemainingRequests(),
+        response.getTotal());
   }
 
 
   @Override
   public ScanResponse createScan(Query query, int perSize) throws IOException {
-    try {
-      URI uri = new URIBuilder().setParameter("domain", query.getDomain())
-          .setParameter("type", query.getType())
-          .setParameter("ip", query.getIp())
-          .setParameter("host", query.getHost())
-          .setParameter("value_domain", query.getValueDomain())
-          .setParameter("value_host", query.getValueHost())
-          .setParameter("value_ip", query.getValueIp())
-          .setParameter("email", query.getEmail())
-          .setParameter("size", perSize + "")
-          .build();
-      return (ScanResponse) doGet(getUrl("dns/scan/create") + uri.toString(), ScanResponse.class);
-    } catch (URISyntaxException ignored) {
-      return null;
-    }
+    String param = new URLParameterBuilder().put("domain", query.getDomain())
+        .put("type", query.getType())
+        .put("ip", query.getIp())
+        .put("host", query.getHost())
+        .put("value_domain", query.getValueDomain())
+        .put("value_host", query.getValueHost())
+        .put("value_ip", query.getValueIp())
+        .put("email", query.getEmail())
+        .put("size", perSize + "")
+        .build();
+    return (ScanResponse) doGet(getUrl("dns/scan/create") + param, ScanResponse.class);
   }
 
   @Override
   public ScanResponse nextScan(String scanId) throws IOException {
-    try {
-      URI uri = new URIBuilder().setParameter("scan_id", scanId).build();
-      return (ScanResponse) doGet(getUrl("dns/scan/next" + uri.toString()), ScanResponse.class);
-    } catch (URISyntaxException ignored) {
-    }
-    return null;
+    String param = new URLParameterBuilder().put("scan_id", scanId).build();
+    return (ScanResponse) doGet(getUrl("dns/scan/next" + param), ScanResponse.class);
   }
 
   @Override

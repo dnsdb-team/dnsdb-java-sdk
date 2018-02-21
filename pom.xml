@@ -21,6 +21,7 @@
     <junit.version>4.12</junit.version>
     <httpclient.version>4.5.5</httpclient.version>
     <nanohttpd.version>2.3.1</nanohttpd.version>
+    <mokito.version>2.15.0</mokito.version>
     <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
     <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
@@ -76,6 +77,14 @@
       <version>${nanohttpd.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mokito.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>

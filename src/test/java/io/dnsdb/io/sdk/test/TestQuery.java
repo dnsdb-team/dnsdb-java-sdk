@@ -6,7 +6,7 @@ import io.dnsdb.sdk.Query;
 import org.junit.Test;
 
 /**
- * <code>TestQuery</code>用于测试{@link Query}
+ * <code>TestQuery</code>用于测试{@link Query}。
  *
  * @author Remonsan
  * @version 1.0
@@ -36,6 +36,5 @@ public class TestQuery {
     assertEquals(email, query.getEmail());
 
   }
-
 
 }

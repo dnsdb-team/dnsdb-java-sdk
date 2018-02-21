@@ -3,6 +3,9 @@ package io.dnsdb.io.sdk.test;
 import static com.google.common.base.Objects.equal;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import com.google.common.collect.Lists;
 import io.dnsdb.sdk.APIClient;
@@ -27,14 +30,18 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
- * <code>TestAPIClient</code>用于测试{@link io.dnsdb.sdk.DefaultAPIClient}
+ * <code>TestAPIClient</code>用于测试{@link io.dnsdb.sdk.DefaultAPIClient}。
  *
  * @author Remonsan
  * @version 1.0
@@ -44,6 +51,8 @@ public class TestAPIClient {
   private APIClient client;
   private APITestServer server;
   private static final int SERVER_PORT = 58080;
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
   private String generateUUIDString() {
     return UUID.randomUUID().toString().replace("-", "");
@@ -110,6 +119,8 @@ public class TestAPIClient {
     try {
       APIUserResponse response = randomAPIUserResponse();
       server.getApiUserResponses().add(response);
+      DefaultAPIClient defaultAPIClient = (DefaultAPIClient) client;
+      defaultAPIClient.setRequestConfig(null);
       APIUser user = client.getAPIUser();
       assertEquals(response.getApiId(), user.getApiId());
       assertEquals(response.getUser(), user.getUser());
@@ -211,6 +222,20 @@ public class TestAPIClient {
     }
     for (DNSRecord ignored : result) {
     }
+  }
+
+
+  @Test
+  public void testDoGetWithNoResponseData() throws IOException, APIException {
+    expectedException.expect(IOException.class);
+    expectedException.expectMessage("No response data");
+    DefaultAPIClient defaultAPIClient = (DefaultAPIClient) client;
+    CloseableHttpClient httpClient = mock(CloseableHttpClient.class);
+    CloseableHttpResponse response = mock(CloseableHttpResponse.class);
+    when(response.getEntity()).thenReturn(null);
+    when(httpClient.execute(any(HttpGet.class))).thenReturn(response);
+    defaultAPIClient.setHttpClient(httpClient);
+    defaultAPIClient.getAPIUser();
   }
 
   @Test

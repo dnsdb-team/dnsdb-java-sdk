@@ -7,7 +7,7 @@ import io.dnsdb.sdk.responses.APIResponse;
 import org.junit.Test;
 
 /**
- * <code>TestAPIResponse</code>用于测试{@link io.dnsdb.sdk.responses.APIResponse}
+ * <code>TestAPIResponse</code>用于测试{@link io.dnsdb.sdk.responses.APIResponse}。
  *
  * @author Remonsan
  * @version 1.0

@@ -6,9 +6,10 @@ import io.dnsdb.sdk.APIManager;
 import org.junit.Test;
 
 /**
- * <code>TestAPIManager</code>用于测试{@link io.dnsdb.sdk.APIManager}
+ * <code>TestAPIManager</code>用于测试{@link io.dnsdb.sdk.APIManager}。
  *
  * @author Remonsan
+ * @version 1.0
  */
 public class TestAPIManager extends APIManager {
 

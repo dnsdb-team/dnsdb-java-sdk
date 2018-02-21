@@ -91,7 +91,7 @@ public class ScanResult implements DNSRecordResult {
           this.currentRecords = Lists.newLinkedList(response.getRecords());
           this.scanId = response.getScanId();
         } catch (IOException e) {
-          e.printStackTrace();
+          throw new IteratorException(e);
         }
       }
       DNSRecord record = currentRecords.get(0);

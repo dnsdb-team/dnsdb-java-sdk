@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Queue;
 
 /**
- * <code>APITestServer</code>是一个API测试服务器。
+ * <code>APITestServer</code>类表示API测试服务器，用于辅助测试{@link io.dnsdb.sdk.DefaultAPIClient}。
  *
  * @author Remonsan
  * @version 1.0
